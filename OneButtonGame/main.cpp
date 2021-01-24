@@ -16,7 +16,7 @@ int main()
     //Player Init
     Player player(window.getSize());
     int ShootTimer = 20;
-    int scoring = 0;
+    //int scoring = 0;
 
     //Obstacle Init
     int obstacleSpawnTimer = 0;
@@ -32,33 +32,25 @@ int main()
         }
 
         //Player movement and collision with window
-        if (player.shape.getPosition().x <= window.getSize().x - player.shape.getGlobalBounds().width) //Left
-        {
-            player.shape.move(10.f, 0.f);
-            //player.shape.setPosition(player.shape.getPosition().x, player.shape.getPosition().y);
-        }
-        if (player.shape.getPosition().x >= player.shape.getGlobalBounds().width) //Right
-        {
-            player.shape.move(-10.f, 0.f);
-            player.shape.setPosition(0.f, player.shape.getPosition().y);
-        }
-        /*if (player.shape.getPosition().x == window.getSize().x - player.shape.getGlobalBounds().width) //Right
-        {
-            player.shape.setPosition(player.shape.getPosition().x, player.shape.getPosition().y);
-            player.shape.move(-10.f, 0.f);
-        }*/
-        //if (player.shape.getPosition().x == player.shape.getGlobalBounds().width) //Right
-            //player.shape.setPosition(0.f, player.shape.getPosition().y);
+        //Movement left and collision with left border 
+        player.shape.move(-10.f, 0.0f);
+        if (player.shape.getPosition().x <= player.shape.getGlobalBounds().width)
+            player.shape.setPosition(0.f, player.shape.getPosition().y); 
+        
+        //Movement right and collision with right border 
+        player.shape.move(10.f, 0.0f);
+        if (player.shape.getPosition().x >= window.getSize().x - player.shape.getGlobalBounds().width) 
+            player.shape.setPosition(window.getSize().x - player.shape.getGlobalBounds().width, player.shape.getPosition().y);
         
         //Stop movement
         if (Keyboard::isKeyPressed(Keyboard::Space))
-            player.shape.getPosition();
+            player.shape.setPosition(player.shape.getPosition().x , player.shape.getPosition().y);
 
         //Enemy
-        if (obstacleSpawnTimer < 20)
+        if (obstacleSpawnTimer < 40)
             obstacleSpawnTimer++;
 
-        if (obstacleSpawnTimer >= 20)
+        if (obstacleSpawnTimer >= 40)
         {
             obstacles.push_back(Obstacle(window.getSize()));
             obstacleSpawnTimer = 0; //reset timer
