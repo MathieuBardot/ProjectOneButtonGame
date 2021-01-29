@@ -2,7 +2,7 @@
 
 Player::Player(Vector2u windowSize)
 {
-	this->HPMax = 10;
+	this->HPMax = 3;
 	this->HP = this->HPMax;
 
 	this->shape.setSize(Vector2f(30.f, 30.f));

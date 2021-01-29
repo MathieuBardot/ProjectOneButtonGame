@@ -59,17 +59,17 @@ int main()
             if ((player.shape.getPosition().x != borderLeft) && (player.shape.getPosition().x != borderRight))
             {
                 player.shape.move(-10.0f, 0.0f);
-                std::cout << "Move left !" << std::endl;
+                //std::cout << "Move left !" << std::endl;
                 if (player.shape.getPosition().x <= borderLeft)
                 {
-                    std::cout << "Collision gauche!" << std::endl;
+                    //std::cout << "Collision gauche!" << std::endl;
                     player.shape.setPosition(0.0f, player.shape.getPosition().y);
                     player.shape.move(10.0f, 0.0f);
-                    std::cout << "Move Right !" << std::endl;
+                    //std::cout << "Move Right !" << std::endl;
                     if (player.shape.getPosition().x >= borderRight)
                     {
                         player.shape.setPosition(borderRight, player.shape.getPosition().y);
-                        std::cout << "Collision droite!" << std::endl;
+                        //std::cout << "Collision droite!" << std::endl;
                     }
                 }
             }
@@ -118,14 +118,14 @@ int main()
                 if (obstacles[i].shape.getGlobalBounds().intersects(player.shape.getGlobalBounds()))
                 {
                     obstacles.erase(obstacles.begin() + i);
-                    player.setHP(player.getHP() - obstacles[i].getHP());
+                    player.setHP(player.getHP() - 1);
                     break;
                 }
             }
         }
 
         // UI Update
-        score.setString("Score :" + std::to_string(scoring));
+        score.setString("Your score :" + std::to_string(scoring));
 
         window.clear();
         window.draw(player.shape);
@@ -139,7 +139,10 @@ int main()
         window.draw(score);
 
         if (player.getHP() <= 0)
+        {
             window.draw(gameOver);
+            window.draw(score);
+        }
 
         window.display();
     }
