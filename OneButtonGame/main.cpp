@@ -55,37 +55,25 @@ int main()
             //Player movement and collision with window
             auto borderLeft = player.shape.getGlobalBounds().width;
             auto borderRight = window.getSize().x - player.shape.getGlobalBounds().width;
-
+            
             if ((player.shape.getPosition().x != borderLeft) && (player.shape.getPosition().x != borderRight))
             {
-                player.shape.move(-10.f, 0.0f);
+                player.shape.move(-10.0f, 0.0f);
                 std::cout << "Move left !" << std::endl;
-
-                if (player.shape.getPosition().x <= player.shape.getGlobalBounds().width)
+                if (player.shape.getPosition().x <= borderLeft)
                 {
-                    std::cout << "Collision !" << std::endl;
-                    player.shape.setPosition(0.f, player.shape.getPosition().y);
-                }
-                player.shape.move(0.0f, 0.0f);
-                std::cout << "Stop move !" << std::endl;
-
-                if ((player.shape.getPosition().x == borderLeft))
-                {
-                    player.shape.move(10.f, 0.0f);
+                    std::cout << "Collision gauche!" << std::endl;
+                    player.shape.setPosition(0.0f, player.shape.getPosition().y);
+                    player.shape.move(10.0f, 0.0f);
                     std::cout << "Move Right !" << std::endl;
-
-                    if (player.shape.getPosition().x >= window.getSize().x - player.shape.getGlobalBounds().width)
+                    if (player.shape.getPosition().x >= borderRight)
                     {
-                        player.shape.setPosition(window.getSize().x - player.shape.getGlobalBounds().width, player.shape.getPosition().y);
-                        std::cout << "Collision !" << std::endl;
+                        player.shape.setPosition(borderRight, player.shape.getPosition().y);
+                        std::cout << "Collision droite!" << std::endl;
                     }
-                    player.shape.move(0.0f, 0.0f);
-                    std::cout << "Stop move !" << std::endl;
                 }
             }
-
             
-
             //Movement left and collision with left border 
             /*player.shape.move(-10.f, 0.0f);
             if (player.shape.getPosition().x <= player.shape.getGlobalBounds().width)
