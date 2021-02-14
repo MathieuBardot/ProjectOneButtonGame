@@ -1,2 +1,11 @@
 ﻿  main.cpp
-  OneButtonGame.vcxproj -> C:\Users\Mathieu\Documents\Game Design\ProjetGameDesign\OneButtonGame\x64\Debug\OneButtonGame.exe
+  Obstacle.cpp
+  Player.cpp
+C:\Users\Mathieu\Documents\ProjectOneButtonGame\OneButtonGame\Player.cpp(10,39): warning C4244: 'argument' : conversion de 'T' en 'float', perte possible de données
+          with
+          [
+              T=unsigned int
+          ]
+  Génération de code en cours...
+  LINK : C:\Users\Mathieu\Documents\ProjectOneButtonGame\x64\Debug\OneButtonGame.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
+  OneButtonGame.vcxproj -> C:\Users\Mathieu\Documents\ProjectOneButtonGame\x64\Debug\OneButtonGame.exe
